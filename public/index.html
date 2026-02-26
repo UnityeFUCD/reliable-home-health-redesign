@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reliable Home Healthcare — Aurora, CO</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --forest: #1e3a2f;
+  --forest-mid: #2d5040;
+  --sage: #5a7f6a;
+  --cream: #f7f2ea;
+  --warm-white: #fdfaf5;
+  --amber: #c8874a;
+  --amber-light: #e8b07a;
+  --charcoal: #1a1a1a;
+  --text-mid: #4a4a4a;
+  --text-light: #7a7a7a;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--warm-white);color:var(--charcoal);overflow-x:hidden;}
+
+/* ── PLACEHOLDERS ── */
+.ph{background:rgba(200,135,74,0.09);border:1.5px dashed rgba(200,135,74,0.45);border-radius:5px;color:var(--amber);font-size:0.72rem;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;padding:0.2em 0.5em;display:inline-block;}
+
+/* ── LOGO ── */
+.logo{display:flex;align-items:center;gap:0.5rem;text-decoration:none;flex-shrink:0;}
+.logo-img{height:58px;width:auto;}
+.logo-text{display:flex;flex-direction:column;line-height:1.15;}
+.logo-text-main{font-size:0.95rem;font-weight:600;color:var(--forest);letter-spacing:-0.01em;}
+.logo-text-sub{font-size:0.65rem;font-weight:500;color:var(--text-mid);letter-spacing:0.04em;}
+
+.logo-light .logo-text-main{color:var(--cream);}
+.logo-light .logo-text-sub{color:rgba(247,242,234,0.5);}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.1rem 4rem;background:rgba(253,250,245,0.93);backdrop-filter:blur(14px);border-bottom:1px solid rgba(30,58,47,0.08);}
+.nav-links{display:flex;gap:2.5rem;list-style:none;align-items:center;}
+.nav-links a{text-decoration:none;font-size:0.85rem;font-weight:500;color:var(--text-mid);letter-spacing:0.05em;text-transform:uppercase;transition:color 0.2s;}
+.nav-links a:hover{color:var(--forest);}
+.nav-cta{background:var(--forest);color:var(--cream)!important;padding:0.65rem 1.5rem!important;border-radius:2rem;transition:background 0.25s!important;}
+.nav-cta:hover{background:var(--amber)!important;}
+
+/* ── BUTTONS ── */
+.btn-primary{background:var(--forest);color:var(--cream);padding:1rem 2.2rem;border-radius:3rem;font-size:0.9rem;font-weight:500;text-decoration:none;letter-spacing:0.03em;transition:all 0.3s;box-shadow:0 4px 20px rgba(30,58,47,0.25);display:inline-block;}
+.btn-primary:hover{background:var(--amber);box-shadow:0 6px 28px rgba(200,135,74,0.35);transform:translateY(-2px);}
+.btn-outline-forest{border:1.5px solid var(--forest);color:var(--forest);padding:0.9rem 2rem;border-radius:3rem;font-size:0.9rem;font-weight:500;text-decoration:none;letter-spacing:0.03em;transition:all 0.3s;display:inline-block;}
+.btn-outline-forest:hover{background:var(--forest);color:var(--cream);}
+.btn-secondary{display:flex;align-items:center;gap:0.5rem;color:var(--forest);text-decoration:none;font-size:0.9rem;font-weight:500;border-bottom:1px solid transparent;transition:border-color 0.2s;}
+.btn-secondary:hover{border-color:var(--forest);}
+.btn-secondary svg{transition:transform 0.2s;}
+.btn-secondary:hover svg{transform:translateX(4px);}
+
+/* ── SECTION LABELS / TITLES ── */
+.section-label{font-size:0.73rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--amber);margin-bottom:1rem;display:flex;align-items:center;gap:0.65rem;}
+.section-label::before{content:'';display:block;width:1.5rem;height:1px;background:var(--amber);}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,3.5vw,3.5rem);font-weight:300;line-height:1.15;color:var(--forest);margin-bottom:1.4rem;}
+.section-title em{font-style:italic;}
+.section-body{font-size:1rem;line-height:1.82;color:var(--text-mid);margin-bottom:1.2rem;}
+
+/* ── HERO ── */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;padding-top:5rem;position:relative;overflow:hidden;}
+.hero-left{display:flex;flex-direction:column;justify-content:center;padding:5rem 4rem;position:relative;z-index:2;}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:0.7rem;font-size:0.77rem;font-weight:500;letter-spacing:0.13em;text-transform:uppercase;color:var(--amber);margin-bottom:1.4rem;opacity:0;animation:fadeUp 0.8s ease 0.2s forwards;}
+.hero-eyebrow::before{content:'';display:block;width:2rem;height:1px;background:var(--amber);}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,5vw,5.5rem);font-weight:300;line-height:1.05;color:var(--forest);margin-bottom:1.6rem;opacity:0;animation:fadeUp 0.8s ease 0.4s forwards;}
+.hero-title em{font-style:italic;font-weight:300;color:var(--amber);}
+.hero-body{font-size:1.05rem;line-height:1.8;color:var(--text-mid);max-width:30rem;margin-bottom:2.6rem;opacity:0;animation:fadeUp 0.8s ease 0.6s forwards;}
+.hero-actions{display:flex;gap:1rem;align-items:center;flex-wrap:wrap;opacity:0;animation:fadeUp 0.8s ease 0.8s forwards;}
+.hero-right{position:relative;overflow:hidden;min-height:100%;}
+.hero-image-wrap{position:absolute;inset:0;background:var(--forest);opacity:0;animation:fadeIn 1s ease 0.3s forwards;}
+.hero-image-wrap::before{content:'';position:absolute;left:-60px;top:0;bottom:0;width:120px;background:var(--warm-white);clip-path:ellipse(60px 55% at 0% 50%);z-index:3;}
+.hero-image{width:100%;height:100%;object-fit:cover;object-position:center 20%;}
+.hero-stats{position:absolute;bottom:4rem;left:3rem;z-index:4;display:flex;gap:1.5rem;opacity:0;animation:fadeUp 0.8s ease 1s forwards;}
+.stat{background:rgba(253,250,245,0.12);backdrop-filter:blur(12px);border:1px solid rgba(253,250,245,0.2);padding:1.2rem 1.6rem;border-radius:1rem;color:var(--cream);text-align:center;}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:600;display:block;line-height:1;margin-bottom:0.3rem;}
+.stat-label{font-size:0.72rem;opacity:0.7;letter-spacing:0.07em;text-transform:uppercase;}
+
+/* ── TRUST BAR ── */
+.trust-bar{background:var(--cream);padding:1.6rem 4rem;display:flex;justify-content:center;align-items:center;gap:3.5rem;flex-wrap:wrap;border-bottom:1px solid rgba(30,58,47,0.08);}
+.trust-item{display:flex;align-items:center;gap:0.65rem;font-size:0.85rem;color:var(--text-mid);font-weight:500;}
+.trust-icon{width:1.5rem;height:1.5rem;background:var(--forest);color:var(--cream);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:700;flex-shrink:0;}
+
+/* ── ABOUT / INTRO ── */
+.intro{padding:7rem 4rem;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1.1fr;gap:6rem;align-items:center;}
+.intro-visual{position:relative;padding-bottom:2.5rem;}
+.intro-card{background:var(--forest);border-radius:2rem;padding:3.5rem;color:var(--cream);position:relative;overflow:hidden;}
+.intro-card::before{content:'';position:absolute;top:-60px;right:-60px;width:200px;height:200px;border-radius:50%;background:rgba(200,135,74,0.18);}
+.quote-mark{font-family:'Cormorant Garamond',serif;font-size:5rem;line-height:0.6;color:var(--amber);opacity:0.5;margin-bottom:1rem;}
+.quote-text{font-family:'Cormorant Garamond',serif;font-size:1.45rem;font-style:italic;font-weight:300;line-height:1.55;margin-bottom:1.8rem;position:relative;z-index:1;}
+.quote-author{font-size:0.82rem;opacity:0.55;letter-spacing:0.05em;position:relative;z-index:1;}
+.floating-badge{position:absolute;bottom:0;left:-1.5rem;background:var(--amber);color:white;padding:1.2rem 1.6rem;border-radius:1.2rem;font-size:0.82rem;font-weight:500;box-shadow:0 8px 30px rgba(200,135,74,0.35);line-height:1.6;}
+
+/* ── SERVICES ── */
+.services{background:var(--cream);padding:7rem 4rem;}
+.services-header{text-align:center;max-width:620px;margin:0 auto 4rem;}
+.services-header .section-label{justify-content:center;}
+.services-header .section-label::before{display:none;}
+
+/* Services: tab-style top row + expandable bottom row */
+.services-top-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:1200px;margin:0 auto;}
+.services-bottom-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:1200px;margin:1.5rem auto 0;overflow:hidden;max-height:0;opacity:0;transition:max-height 0.6s cubic-bezier(0.16,1,0.3,1),opacity 0.4s ease;}
+.services-bottom-grid.open{max-height:600px;opacity:1;}
+
+.view-more-btn{display:flex;align-items:center;justify-content:center;gap:0.75rem;margin:2rem auto 0;max-width:1200px;width:100%;background:rgba(30,58,47,0.06);border:1px solid rgba(30,58,47,0.12);border-radius:3rem;padding:1rem 2rem;font-size:0.9rem;font-weight:500;color:var(--forest);cursor:pointer;transition:all 0.3s;letter-spacing:0.03em;}
+.view-more-btn:hover{background:var(--forest);color:var(--cream);border-color:var(--forest);}
+.view-more-btn .vmb-arrow{display:inline-block;transition:transform 0.3s;font-size:1rem;}
+.view-more-btn.open .vmb-arrow{transform:rotate(180deg);}
+
+.service-card{background:var(--warm-white);border-radius:1.5rem;padding:2.5rem;border:1px solid rgba(30,58,47,0.07);transition:all 0.35s cubic-bezier(0.34,1.56,0.64,1);cursor:pointer;position:relative;overflow:hidden;}
+.service-card::after{content:'';position:absolute;inset:0;background:var(--forest);opacity:0;transition:opacity 0.3s;border-radius:inherit;z-index:0;}
+.service-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(30,58,47,0.14);}
+.service-card:hover::after{opacity:1;}
+.service-card>*{position:relative;z-index:1;transition:color 0.3s;}
+.service-card:hover .service-icon{background:rgba(255,255,255,0.12);}
+.service-card:hover .service-icon svg{stroke:var(--amber-light);}
+.service-card:hover .service-name{color:var(--cream);}
+.service-card:hover .service-desc{color:rgba(247,242,234,0.68);}
+.service-card:hover .service-arrow{color:var(--amber-light);}
+.service-icon{width:3rem;height:3rem;background:rgba(30,58,47,0.07);border-radius:0.8rem;display:flex;align-items:center;justify-content:center;margin-bottom:1.4rem;transition:background 0.3s;}
+.service-icon svg{width:1.4rem;height:1.4rem;stroke:var(--forest);}
+.service-name{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:var(--forest);margin-bottom:0.7rem;}
+.service-desc{font-size:0.88rem;line-height:1.72;color:var(--text-mid);}
+.service-arrow{display:inline-block;margin-top:1.2rem;font-size:0.85rem;color:var(--amber);font-weight:500;}
+
+/* ── APPOINTMENT / INSURANCE / REFERRAL ── */
+.action-cards-section{padding:5rem 4rem;max-width:1200px;margin:0 auto;}
+.action-cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+
+.action-card{background:var(--warm-white);border:1px solid rgba(30,58,47,0.08);border-radius:1.5rem;padding:2.2rem;display:flex;flex-direction:column;gap:1rem;transition:box-shadow 0.3s,transform 0.3s;}
+.action-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(30,58,47,0.1);}
+.action-card.dark{background:var(--forest);border-color:var(--forest);}
+.action-card-icon{width:2.8rem;height:2.8rem;background:rgba(30,58,47,0.07);border-radius:0.75rem;display:flex;align-items:center;justify-content:center;}
+.action-card.dark .action-card-icon{background:rgba(255,255,255,0.1);}
+.action-card-icon svg{width:1.3rem;height:1.3rem;stroke:var(--forest);}
+.action-card.dark .action-card-icon svg{stroke:var(--amber-light);}
+.action-card h3{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:var(--forest);}
+.action-card.dark h3{color:var(--cream);}
+.action-card p{font-size:0.88rem;line-height:1.7;color:var(--text-mid);flex:1;}
+.action-card.dark p{color:rgba(247,242,234,0.65);}
+.action-card-btn{display:block;text-align:center;padding:0.85rem 1.5rem;border-radius:2rem;font-size:0.88rem;font-weight:500;text-decoration:none;transition:all 0.3s;cursor:pointer;border:none;font-family:inherit;}
+.action-card-btn.primary{background:var(--forest);color:var(--cream);}
+.action-card-btn.primary:hover{background:var(--amber);}
+.action-card-btn.outline{background:transparent;border:1.5px solid rgba(30,58,47,0.2);color:var(--forest);}
+.action-card-btn.outline:hover{background:var(--forest);color:var(--cream);border-color:var(--forest);}
+.action-card-btn.amber{background:var(--amber);color:white;}
+.action-card-btn.amber:hover{background:var(--amber-light);}
+
+/* Service coverage strip */
+.coverage-strip{background:var(--cream);padding:2rem 4rem;border-top:1px solid rgba(30,58,47,0.07);border-bottom:1px solid rgba(30,58,47,0.07);}
+.coverage-strip-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:2rem;flex-wrap:wrap;}
+.coverage-label{font-size:0.72rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--amber);white-space:nowrap;}
+.coverage-chips{display:flex;gap:0.6rem;flex-wrap:wrap;}
+.coverage-chip{background:white;border:1px solid rgba(30,58,47,0.1);border-radius:2rem;padding:0.35rem 0.9rem;font-size:0.8rem;color:var(--text-mid);font-weight:500;}
+
+/* ── APPOINTMENT MODAL ── */
+.modal-overlay{position:fixed;inset:0;background:rgba(10,20,15,0.6);backdrop-filter:blur(4px);z-index:200;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.3s;}
+.modal-overlay.open{opacity:1;pointer-events:all;}
+.modal-box{background:var(--warm-white);border-radius:1.5rem;padding:2.5rem;max-width:560px;width:90%;max-height:90vh;overflow-y:auto;transform:translateY(20px);transition:transform 0.35s cubic-bezier(0.16,1,0.3,1);position:relative;}
+.modal-overlay.open .modal-box{transform:none;}
+.modal-close{position:absolute;top:1.2rem;right:1.2rem;background:rgba(30,58,47,0.08);border:none;border-radius:50%;width:2rem;height:2rem;font-size:1rem;cursor:pointer;color:var(--forest);display:flex;align-items:center;justify-content:center;transition:background 0.2s;}
+.modal-close:hover{background:rgba(30,58,47,0.15);}
+.modal-title{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:600;color:var(--forest);margin-bottom:0.4rem;}
+.modal-subtitle{font-size:0.88rem;color:var(--text-mid);margin-bottom:1.8rem;line-height:1.6;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;}
+.form-group{display:flex;flex-direction:column;gap:0.4rem;margin-bottom:1rem;}
+.form-group label{font-size:0.78rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-mid);}
+.form-group input,.form-group select,.form-group textarea{border:1.5px solid rgba(30,58,47,0.15);border-radius:0.75rem;padding:0.75rem 1rem;font-size:0.9rem;font-family:inherit;color:var(--charcoal);background:white;transition:border-color 0.2s;outline:none;}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--forest);}
+.form-group textarea{resize:vertical;min-height:80px;}
+.modal-tabs{display:flex;gap:0;margin-bottom:1.5rem;border:1.5px solid rgba(30,58,47,0.12);border-radius:0.75rem;overflow:hidden;}
+.modal-tab{flex:1;padding:0.65rem;text-align:center;font-size:0.82rem;font-weight:600;cursor:pointer;transition:all 0.25s;color:var(--text-mid);border:none;background:transparent;font-family:inherit;}
+.modal-tab.active{background:var(--forest);color:var(--cream);}
+.modal-form-section{display:none;}
+.modal-form-section.active{display:block;}
+.consent-row{display:flex;gap:0.75rem;align-items:flex-start;margin-bottom:1.5rem;font-size:0.82rem;color:var(--text-mid);line-height:1.5;}
+.consent-row input{margin-top:2px;flex-shrink:0;}
+
+/* ── RESOURCES ── */
+.resources{padding:7rem 4rem;background:var(--warm-white);}
+.resources-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1.4fr;gap:5rem;align-items:start;}
+.resources-left{}
+.resources-assist-card{background:var(--cream);border:1px solid rgba(30,58,47,0.08);border-radius:1rem;padding:1.5rem;margin-top:2rem;}
+.resources-assist-card h4{font-size:0.95rem;font-weight:600;color:var(--forest);margin-bottom:0.4rem;}
+.resources-assist-card p{font-size:0.85rem;color:var(--text-mid);margin-bottom:0.75rem;line-height:1.6;}
+.resources-assist-card a{display:flex;align-items:center;gap:0.4rem;color:var(--amber);font-size:0.88rem;font-weight:600;text-decoration:none;}
+.resources-assist-card a:hover{color:var(--forest);}
+
+.resource-list{display:flex;flex-direction:column;gap:0;}
+.resource-item{display:flex;align-items:center;gap:1.2rem;padding:1.2rem 0;border-bottom:1px solid rgba(30,58,47,0.07);cursor:pointer;transition:all 0.2s;text-decoration:none;}
+.resource-item:first-child{border-top:1px solid rgba(30,58,47,0.07);}
+.resource-item:hover{padding-left:0.5rem;}
+.resource-num{width:2rem;height:2rem;background:rgba(30,58,47,0.06);border-radius:0.5rem;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:600;color:var(--forest);flex-shrink:0;}
+.resource-item:hover .resource-num{background:var(--forest);color:var(--cream);}
+.resource-content{flex:1;}
+.resource-name{font-size:0.95rem;font-weight:500;color:var(--forest);margin-bottom:0.2rem;}
+.resource-desc{font-size:0.82rem;color:var(--text-mid);line-height:1.4;}
+.resource-arrow{color:var(--text-light);transition:transform 0.2s;}
+.resource-item:hover .resource-arrow{transform:translateX(4px);color:var(--amber);}
+
+/* ── PROCESS ── */
+.process{padding:7rem 4rem;background:var(--cream);}
+.process-header{max-width:520px;margin-bottom:4rem;}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;max-width:1200px;margin:0 auto;}
+.steps::before{content:'';position:absolute;top:2rem;left:2rem;right:2rem;height:1px;background:linear-gradient(to right,var(--amber),var(--sage));z-index:0;}
+.step{padding:0 1.5rem;position:relative;z-index:1;}
+.step-num{width:4rem;height:4rem;background:var(--cream);border:2px solid var(--amber);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:var(--amber);margin-bottom:1.5rem;transition:all 0.3s;}
+.step:hover .step-num{background:var(--amber);color:white;transform:scale(1.1);}
+.step-title{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:600;color:var(--forest);margin-bottom:0.6rem;}
+.step-desc{font-size:0.88rem;line-height:1.72;color:var(--text-mid);}
+
+/* ── CAREERS ── */
+.careers{padding:7rem 4rem;background:var(--warm-white);}
+.careers-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1.1fr;gap:5rem;align-items:start;}
+.careers-benefits{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0;}
+.benefit-item{background:var(--cream);border:1px solid rgba(30,58,47,0.07);border-radius:0.75rem;padding:1rem 1.2rem;display:flex;align-items:flex-start;gap:0.65rem;}
+.benefit-dot{width:0.55rem;height:0.55rem;background:var(--sage);border-radius:50%;flex-shrink:0;margin-top:0.3rem;}
+.benefit-name{font-size:0.9rem;font-weight:600;color:var(--forest);margin-bottom:0.15rem;}
+.benefit-sub{font-size:0.78rem;color:var(--text-mid);}
+
+.jobs-panel{background:var(--forest);border-radius:1.5rem;padding:2rem;color:var(--cream);}
+.jobs-panel h3{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:var(--cream);margin-bottom:1.5rem;}
+.job-list{display:flex;flex-direction:column;gap:0.75rem;margin-bottom:1.5rem;}
+.job-item{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);border-radius:0.85rem;padding:1rem 1.2rem;transition:background 0.2s;cursor:pointer;}
+.job-item:hover{background:rgba(255,255,255,0.12);}
+.job-title{font-size:0.95rem;font-weight:600;color:var(--cream);margin-bottom:0.25rem;}
+.job-meta{font-size:0.78rem;color:rgba(247,242,234,0.5);display:flex;gap:0.5rem;}
+.job-meta span{display:flex;align-items:center;gap:0.25rem;}
+.job-dot{width:3px;height:3px;background:rgba(247,242,234,0.3);border-radius:50%;align-self:center;}
+.jobs-resume{border-top:1px solid rgba(255,255,255,0.1);padding-top:1.2rem;}
+.jobs-resume p{font-size:0.8rem;color:rgba(247,242,234,0.5);margin-bottom:0.75rem;}
+.resume-btn{display:block;text-align:center;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:rgba(247,242,234,0.8);padding:0.75rem;border-radius:0.75rem;font-size:0.85rem;font-weight:500;cursor:pointer;transition:all 0.2s;font-family:inherit;}
+.resume-btn:hover{background:rgba(255,255,255,0.15);}
+
+/* ── CONTACT ── */
+.contact{padding:0;position:relative;overflow:hidden;}
+.contact-inner{display:grid;grid-template-columns:1fr 1fr;min-height:580px;}
+.contact-map-side{position:relative;overflow:hidden;}
+.contact-map-side iframe{width:100%;height:100%;border:none;min-height:580px;filter:saturate(0.7) brightness(0.95);}
+.contact-map-overlay{position:absolute;inset:0;background:linear-gradient(to right,transparent 70%,var(--warm-white));pointer-events:none;z-index:1;}
+.contact-form-side{background:var(--warm-white);padding:4rem 4rem 4rem 3rem;display:flex;flex-direction:column;justify-content:center;}
+.contact-form-side .section-label{color:var(--amber);}
+.contact-form-side .section-title{font-size:clamp(2rem,3vw,3rem);margin-bottom:0.6rem;}
+.contact-info-items{display:flex;flex-direction:column;gap:0.9rem;margin-bottom:2rem;}
+.contact-info-item{display:flex;align-items:flex-start;gap:0.75rem;font-size:0.88rem;color:var(--text-mid);}
+.contact-info-item svg{flex-shrink:0;stroke:var(--amber);margin-top:1px;}
+.contact-info-item strong{color:var(--charcoal);display:block;font-size:0.75rem;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:0.1rem;}
+.contact-socials{display:flex;gap:0.75rem;margin-bottom:2rem;}
+.social-btn{width:2.4rem;height:2.4rem;background:var(--forest);border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;color:var(--cream);transition:background 0.2s;}
+.social-btn:hover{background:var(--amber);}
+.contact-form{display:flex;flex-direction:column;gap:0;}
+.contact-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.cf-group{display:flex;flex-direction:column;gap:0.35rem;margin-bottom:0.9rem;}
+.cf-group label{font-size:0.73rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-mid);}
+.cf-group input,.cf-group textarea{border:1.5px solid rgba(30,58,47,0.12);border-radius:0.65rem;padding:0.7rem 1rem;font-size:0.88rem;font-family:inherit;color:var(--charcoal);background:var(--cream);transition:border-color 0.2s;outline:none;width:100%;}
+.cf-group input:focus,.cf-group textarea:focus{border-color:var(--forest);background:white;}
+.cf-group textarea{resize:vertical;min-height:90px;}
+.cf-consent{display:flex;gap:0.65rem;align-items:flex-start;font-size:0.78rem;color:var(--text-mid);line-height:1.5;margin-bottom:1.2rem;}
+.cf-consent a{color:var(--forest);}
+.cf-submit{background:var(--forest);color:var(--cream);border:none;border-radius:2rem;padding:0.9rem 2rem;font-size:0.9rem;font-weight:500;font-family:inherit;cursor:pointer;width:100%;transition:all 0.3s;}
+.cf-submit:hover{background:var(--amber);}
+
+/* ── TESTIMONIALS ── */
+.testimonials{background:var(--forest);padding:7rem 4rem;position:relative;overflow:hidden;}
+.testimonials::before{content:'';position:absolute;top:-100px;right:-100px;width:400px;height:400px;border-radius:50%;background:rgba(200,135,74,0.09);}
+.testimonials::after{content:'';position:absolute;bottom:-80px;left:-60px;width:280px;height:280px;border-radius:50%;background:rgba(90,127,106,0.15);}
+.testimonials-header{text-align:center;margin-bottom:4rem;position:relative;z-index:1;}
+.testimonials-header .section-label{color:var(--amber-light);justify-content:center;}
+.testimonials-header .section-label::before{background:var(--amber-light);}
+.testimonials-header .section-title{color:var(--cream);}
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:1200px;margin:0 auto;position:relative;z-index:1;}
+.testimonial-card{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:1.5rem;padding:2.2rem;transition:all 0.3s;}
+.testimonial-card:hover{background:rgba(255,255,255,0.1);transform:translateY(-4px);}
+.stars{color:var(--amber-light);font-size:0.9rem;margin-bottom:1rem;letter-spacing:0.08em;}
+.testimonial-text{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-style:italic;font-weight:300;line-height:1.65;color:rgba(247,242,234,0.88);margin-bottom:1.5rem;}
+.testimonial-author{font-size:0.8rem;color:rgba(247,242,234,0.45);font-weight:500;letter-spacing:0.05em;text-transform:uppercase;}
+
+/* ── CTA ── */
+.cta-section{padding:7rem 4rem;text-align:center;position:relative;overflow:hidden;}
+.cta-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(200,135,74,0.07) 0%,transparent 65%);}
+.cta-inner{position:relative;z-index:1;max-width:700px;margin:0 auto;}
+.cta-inner .section-title{font-size:clamp(2.5rem,4vw,4rem);margin-bottom:1.2rem;}
+.cta-inner>p{font-size:1.05rem;line-height:1.8;color:var(--text-mid);margin-bottom:2.5rem;}
+.cta-actions{display:flex;gap:1rem;justify-content:center;align-items:center;flex-wrap:wrap;}
+.phone-link{display:flex;align-items:center;gap:0.5rem;color:var(--forest);text-decoration:none;font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:400;transition:color 0.2s;}
+.phone-link:hover{color:var(--amber);}
+
+/* ── FOOTER ── */
+footer{background:#0f1a15;padding:3.5rem 4rem 2rem;}
+.footer-main{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.2fr;gap:3rem;margin-bottom:2.5rem;padding-bottom:2.5rem;border-bottom:1px solid rgba(255,255,255,0.07);}
+.footer-brand p{font-size:0.87rem;line-height:1.75;color:rgba(247,242,234,0.4);margin:0.85rem 0 1rem;}
+.footer-certs{display:flex;gap:0.6rem;flex-wrap:wrap;}
+.footer-cert-badge{border:1px solid rgba(247,242,234,0.18);border-radius:2rem;padding:0.35rem 0.9rem;font-size:0.72rem;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:rgba(247,242,234,0.45);}
+.footer-col-title{font-size:0.68rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:rgba(247,242,234,0.28);margin-bottom:1.2rem;}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:0.65rem;}
+.footer-col ul a{text-decoration:none;font-size:0.87rem;color:rgba(247,242,234,0.48);transition:color 0.2s;}
+.footer-col ul a:hover{color:var(--amber-light);}
+.footer-service-areas .area-chips{display:flex;flex-wrap:wrap;gap:0.5rem;}
+.area-chip{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.09);border-radius:2rem;padding:0.3rem 0.75rem;font-size:0.77rem;color:rgba(247,242,234,0.45);}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;font-size:0.78rem;color:rgba(247,242,234,0.22);flex-wrap:wrap;gap:1rem;}
+.footer-bottom-links{display:flex;gap:1.8rem;}
+.footer-bottom-links a{color:rgba(247,242,234,0.28);text-decoration:none;transition:color 0.2s;}
+.footer-bottom-links a:hover{color:var(--amber-light);}
+.footer-socials{display:flex;gap:0.6rem;}
+.footer-social{width:2rem;height:2rem;background:rgba(255,255,255,0.07);border-radius:50%;display:flex;align-items:center;justify-content:center;color:rgba(247,242,234,0.5);text-decoration:none;font-size:0.75rem;transition:background 0.2s;}
+.footer-social:hover{background:var(--amber);}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+.reveal{opacity:0;transform:translateY(28px);transition:all 0.75s cubic-bezier(0.16,1,0.3,1);}
+.reveal.visible{opacity:1;transform:none;}
+
+/* Staggered step reveal */
+.step.reveal{transition-property:opacity,transform;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1000px){
+  nav{padding:1rem 1.5rem;}
+  .nav-links{display:none;}
+  .hero{grid-template-columns:1fr;min-height:auto;}
+  .hero-left{padding:4rem 1.5rem 3rem;}
+  .hero-right{height:50vw;min-height:280px;}
+  .hero-stats{left:1.5rem;bottom:1.5rem;gap:1rem;}
+  .trust-bar{padding:1.5rem;gap:1.5rem;}
+  .intro{grid-template-columns:1fr;gap:3rem;padding:5rem 1.5rem;}
+  .services,.testimonials,.process,.cta-section,.careers,.resources{padding:5rem 1.5rem;}
+  .action-cards-section{padding:3rem 1.5rem;}
+  .action-cards-grid{grid-template-columns:1fr;}
+  .services-top-grid,.services-bottom-grid{grid-template-columns:1fr;}
+  .steps{grid-template-columns:1fr 1fr;}
+  .steps::before{display:none;}
+  .step{margin-bottom:2.5rem;}
+  .testimonials-grid{grid-template-columns:1fr;}
+  .contact-inner{grid-template-columns:1fr;}
+  .contact-map-side{height:250px;}
+  .contact-map-side iframe{min-height:250px;}
+  .contact-form-side{padding:2.5rem 1.5rem;}
+  .careers-inner{grid-template-columns:1fr;}
+  .resources-inner{grid-template-columns:1fr;}
+  footer{padding:3rem 1.5rem 1.5rem;}
+  .footer-main{grid-template-columns:1fr 1fr;gap:2rem;}
+  .footer-bottom{flex-direction:column;text-align:center;}
+  .coverage-strip{padding:1.5rem;}
+}
+@media(max-width:600px){
+  .steps{grid-template-columns:1fr;}
+  .footer-main{grid-template-columns:1fr;}
+  .form-row{grid-template-columns:1fr;}
+  .careers-benefits{grid-template-columns:1fr;}
+  .contact-row{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     NAVIGATION
+══════════════════════════════════════ -->
+<nav>
+  <!-- LOGO -->
+  <a href="/" class="logo">
+    <img src="/logo.png" alt="Reliable Home Healthcare" class="logo-img">
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About Us</a></li>
+    <li><a href="#resources">Resources</a></li>
+    <li><a href="#careers">Careers</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#contact" class="nav-cta">Get Started</a></li>
+  </ul>
+</nav>
+
+
+<!-- ══════════════════════════════════════
+     HERO
+══════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Aurora, Colorado &nbsp;·&nbsp; Licensed &amp; Insured</div>
+
+    <h1 class="hero-title">
+      Care that feels<br>like <em>family,</em><br>right at home.
+    </h1>
+
+    <p class="hero-body">
+      We bring skilled, compassionate health care to your doorstep — so you or your loved one can heal and thrive in the comfort and familiarity of home.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Schedule a Free Consultation</a>
+      <a href="tel:7206513007" class="btn-secondary">
+        Call 720-651-3007
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-image-wrap">
+      <!-- CARE PHOTO INSERTED -->
+      <img 
+        src="https://ext.same-assets.com/3731215526/819752298.jpeg" 
+        alt="Caregiver with senior patient in a comfortable home setting"
+        class="hero-image"
+      />
+    </div>
+
+    <div class="hero-stats">
+      <!-- Left blank as requested -->
+      <div class="stat">
+        <span class="stat-num">[##]+</span>
+        <span class="stat-label">Years in Service</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">[###]+</span>
+        <span class="stat-label">Families Cared For</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     TRUST BAR
+══════════════════════════════════════ -->
+<div class="trust-bar">
+  <div class="trust-item">
+    <span class="trust-icon">✓</span>
+    Medicare &amp; Medicaid Certified
+  </div>
+  <div class="trust-item">
+    <span class="trust-icon">✓</span>
+    CHAP Accredited
+  </div>
+  <div class="trust-item">
+    <span class="trust-icon">✓</span>
+    Available 7 Days a Week
+  </div>
+  <div class="trust-item">
+    <span class="trust-icon">✓</span>
+    Free Initial Home Assessment
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     ABOUT / INTRO
+══════════════════════════════════════ -->
+<section class="intro" id="about">
+  <div class="intro-copy reveal">
+    <div class="section-label">Our Commitment</div>
+    <h2 class="section-title">Healing happens best <em>at home.</em></h2>
+    <p class="section-body">
+      At <span class="ph">[Company Name]</span>, we believe that quality medical care shouldn't require you to leave the people and places you love. Our dedicated team of nurses, therapists, and aides brings clinical excellence directly to your home in Aurora and the surrounding Colorado communities.
+    </p>
+    <p class="section-body">
+      Every care plan is as unique as the person it's designed for — built around your goals, your schedule, and your life.
+    </p>
+    <a href="#about" class="btn-primary">Meet Our Team</a>
+  </div>
+
+  <div class="intro-visual reveal" style="transition-delay:0.15s">
+    <div class="intro-card">
+      <div class="quote-mark">"</div>
+      <!-- TEMPLATE: Replace with a real patient or family testimonial -->
+      <p class="quote-text">
+        <span class="ph" style="font-style:normal;font-family:inherit;">[Featured testimonial — 1 to 2 sentences from a real patient or family member]</span>
+      </p>
+      <div class="quote-author">— <span class="ph">[First Name L., City]</span></div>
+    </div>
+    <div class="floating-badge">
+      <!-- TEMPLATE: Your real Google rating and review count -->
+      ★ <span class="ph" style="background:transparent;border:none;color:inherit;padding:0;">[X.X]</span> / 5 Average Rating<br>
+      <span style="opacity:0.8">from <span class="ph" style="background:transparent;border:none;color:inherit;padding:0;">[###]</span>+ Google reviews</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     SERVICES — Comprehensive Care
+══════════════════════════════════════ -->
+<section class="services" id="services">
+  <div class="services-header reveal">
+    <div class="section-label">What We Offer</div>
+    <h2 class="section-title">Comprehensive care, <em>close to home.</em></h2>
+  </div>
+
+  <!-- Top 3 always visible -->
+  <div class="services-top-grid">
+    <div class="service-card reveal">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+      </div>
+      <div class="service-name">Skilled Nursing</div>
+      <p class="service-desc">Registered and licensed nurses providing wound care, medication management, IV therapy, and chronic disease monitoring at home.</p>
+      <span class="service-arrow">Learn more →</span>
+    </div>
+
+    <div class="service-card reveal" style="transition-delay:0.08s">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="6" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+      </div>
+      <div class="service-name">Physical Therapy</div>
+      <p class="service-desc">Restore strength, mobility, and independence with personalized PT programs developed and administered in your own home.</p>
+      <span class="service-arrow">Learn more →</span>
+    </div>
+
+    <div class="service-card reveal" style="transition-delay:0.16s">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M9 12h6M12 9v6M3 12a9 9 0 1 0 18 0 9 9 0 0 0-18 0"/></svg>
+      </div>
+      <div class="service-name">Occupational Therapy</div>
+      <p class="service-desc">Regain independence in daily living activities with therapists who adapt your environment and rebuild functional skills.</p>
+      <span class="service-arrow">Learn more →</span>
+    </div>
+  </div>
+
+  <!-- Toggle button -->
+  <button class="view-more-btn" id="viewMoreBtn" onclick="toggleServices()">
+    <span class="vmb-arrow">↓</span> View More Services
+  </button>
+
+  <!-- Bottom 3 hidden by default -->
+  <div class="services-bottom-grid" id="servicesBottom">
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      </div>
+      <div class="service-name">Speech Therapy</div>
+      <p class="service-desc">Support recovery from stroke, surgery, or illness with speech-language pathology services for communication and swallowing.</p>
+      <span class="service-arrow">Learn more →</span>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      </div>
+      <div class="service-name">Home Health Aides</div>
+      <p class="service-desc">Compassionate aides supporting personal care, hygiene, meal preparation, and companionship for everyday comfort and dignity.</p>
+      <span class="service-arrow">Learn more →</span>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg>
+      </div>
+      <div class="service-name">Medical Social Services</div>
+      <p class="service-desc">Expert social workers helping navigate community resources, care transitions, emotional support, and long-term planning.</p>
+      <span class="service-arrow">Learn more →</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     APPOINTMENT / INSURANCE / REFERRALS
+══════════════════════════════════════ -->
+<section class="action-cards-section reveal">
+  <div class="action-cards-grid">
+
+    <!-- Set an Appointment -->
+    <div class="action-card reveal">
+      <div class="action-card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+      </div>
+      <h3>Set an Appointment</h3>
+      <p>Schedule your care with ease and convenience. Our team is ready to help you or your loved ones find the right care plan.</p>
+      <button class="action-card-btn primary" onclick="openModal('appointment')">Schedule Now</button>
+    </div>
+
+    <!-- Insurance Accepted -->
+    <div class="action-card reveal" style="transition-delay:0.1s">
+      <div class="action-card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <h3>Insurance Accepted</h3>
+      <p>We work with most major insurance companies, including Medicare and Medicaid. Our billing team handles the paperwork for you.</p>
+      <a href="#contact" class="action-card-btn outline">Learn More</a>
+    </div>
+
+    <!-- Send Referrals -->
+    <div class="action-card dark reveal" style="transition-delay:0.2s">
+      <div class="action-card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+      <h3>Send Your Referrals</h3>
+      <p>Healthcare providers can easily refer patients to our team. We make the process seamless for you and your patients.</p>
+      <button class="action-card-btn amber" onclick="openModal('referral')">Send Referral</button>
+    </div>
+
+  </div>
+</section>
+
+<!-- Service Coverage Strip -->
+<div class="coverage-strip reveal">
+  <div class="coverage-strip-inner">
+    <span class="coverage-label">Service Coverage</span>
+    <div class="coverage-chips">
+      <span class="coverage-chip">Adams</span>
+      <span class="coverage-chip">Arapahoe</span>
+      <span class="coverage-chip">Denver</span>
+      <span class="coverage-chip">Douglas</span>
+      <span class="coverage-chip">Elbert</span>
+      <span class="coverage-chip">Jefferson</span>
+      <span class="coverage-chip">Larimer</span>
+      <span class="coverage-chip">Morgan</span>
+      <span class="coverage-chip">Washington</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     RESOURCES
+══════════════════════════════════════ -->
+<section class="resources" id="resources">
+  <div class="resources-inner">
+    <div class="resources-left reveal">
+      <div class="section-label">Resources</div>
+      <h2 class="section-title">Helpful Resources &amp; <em>Information</em></h2>
+      <p class="section-body">
+        Access important information about your care, rights, and how we maintain the highest standards of service and privacy.
+      </p>
+
+      <div class="resources-assist-card">
+        <h4>Need Assistance?</h4>
+        <p>Our team is available to help with any questions about our services.</p>
+        <a href="tel:7206513007">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.38 2 2 0 0 1 3.6 1.2h3a2 2 0 0 1 2 1.72c.13.96.36 1.91.7 2.81a2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6.08 6.08l1.96-1.97a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call 720-651-3007
+        </a>
+      </div>
+    </div>
+
+    <div class="resource-list reveal" style="transition-delay:0.15s">
+      <a href="#" class="resource-item">
+        <div class="resource-num">1</div>
+        <div class="resource-content">
+          <div class="resource-name">Patient Rights &amp; Responsibilities</div>
+          <div class="resource-desc">Understanding your rights as a patient and what we expect from our partnership.</div>
+        </div>
+        <svg class="resource-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+      </a>
+
+      <a href="#" class="resource-item">
+        <div class="resource-num">2</div>
+        <div class="resource-content">
+          <div class="resource-name">HIPAA Privacy Practices</div>
+          <div class="resource-desc">Learn how we protect your personal health information with strict confidentiality.</div>
+        </div>
+        <svg class="resource-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+      </a>
+
+      <a href="#" class="resource-item">
+        <div class="resource-num">3</div>
+        <div class="resource-content">
+          <div class="resource-name">Emergency Preparedness</div>
+          <div class="resource-desc">Our comprehensive plan to ensure continuous care during emergencies.</div>
+        </div>
+        <svg class="resource-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+      </a>
+
+      <a href="#" class="resource-item">
+        <div class="resource-num">4</div>
+        <div class="resource-content">
+          <div class="resource-name">Patient Satisfaction Survey</div>
+          <div class="resource-desc">Share your feedback to help us continuously improve our services.</div>
+        </div>
+        <svg class="resource-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     HOW IT WORKS
+══════════════════════════════════════ -->
+<section class="process" id="process">
+  <div class="process-header reveal" style="max-width:1200px;margin-left:auto;margin-right:auto;">
+    <div class="section-label">Getting Started</div>
+    <h2 class="section-title">Simple steps to <em>better care.</em></h2>
+  </div>
+
+  <div class="steps">
+    <div class="step reveal">
+      <div class="step-num">01</div>
+      <div class="step-title">Call or Connect</div>
+      <p class="step-desc">Reach out by phone or online. Our care coordinators are available 7 days a week to answer your questions with no obligation.</p>
+    </div>
+    <div class="step reveal" style="transition-delay:0.15s">
+      <div class="step-num">02</div>
+      <div class="step-title">Free Home Assessment</div>
+      <p class="step-desc">A registered nurse visits your home to understand your needs and goals — at no cost to you and with no commitment required.</p>
+    </div>
+    <div class="step reveal" style="transition-delay:0.3s">
+      <div class="step-num">03</div>
+      <div class="step-title">Personalized Plan</div>
+      <p class="step-desc">We build a care plan tailored to your needs, coordinate with your physician, and confirm your insurance benefits before care begins.</p>
+    </div>
+    <div class="step reveal" style="transition-delay:0.45s">
+      <div class="step-num">04</div>
+      <div class="step-title">Care Begins</div>
+      <p class="step-desc">Your dedicated care team arrives ready to support your recovery and well-being — on your schedule, in your home.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     CAREERS
+══════════════════════════════════════ -->
+<section class="careers" id="careers">
+  <div class="careers-inner">
+    <div class="reveal">
+      <div class="section-label">Careers</div>
+      <h2 class="section-title">Join Our <em>Healthcare Team</em></h2>
+      <p class="section-body">Make a difference in people's lives every day. We're looking for compassionate healthcare professionals to join our growing team.</p>
+
+      <div class="careers-benefits">
+        <div class="benefit-item">
+          <div class="benefit-dot"></div>
+          <div>
+            <div class="benefit-name">Health Benefits</div>
+            <div class="benefit-sub">Comprehensive coverage</div>
+          </div>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-dot"></div>
+          <div>
+            <div class="benefit-name">Flexible Schedule</div>
+            <div class="benefit-sub">Work-life balance</div>
+          </div>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-dot"></div>
+          <div>
+            <div class="benefit-name">Growth Opportunities</div>
+            <div class="benefit-sub">Career advancement</div>
+          </div>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-dot"></div>
+          <div>
+            <div class="benefit-name">Supportive Team</div>
+            <div class="benefit-sub">Collaborative culture</div>
+          </div>
+        </div>
+      </div>
+
+      <a href="#contact" class="btn-primary">Apply Now</a>
+    </div>
+
+    <div class="jobs-panel reveal" style="transition-delay:0.15s">
+      <h3>Open Positions</h3>
+      <div class="job-list">
+        <div class="job-item">
+          <div class="job-title">Registered Nurse (RN)</div>
+          <div class="job-meta">
+            <span>Full-time</span><span class="job-dot"></span><span>Aurora, CO</span>
+          </div>
+        </div>
+        <div class="job-item">
+          <div class="job-title">Physical Therapist</div>
+          <div class="job-meta">
+            <span>Full-time</span><span class="job-dot"></span><span>Denver, CO</span>
+          </div>
+        </div>
+        <div class="job-item">
+          <div class="job-title">Home Health Aide</div>
+          <div class="job-meta">
+            <span>Part-time</span><span class="job-dot"></span><span>Multiple Locations</span>
+          </div>
+        </div>
+        <div class="job-item">
+          <div class="job-title">Speech-Language Pathologist</div>
+          <div class="job-meta">
+            <span>Full-time</span><span class="job-dot"></span><span>Aurora, CO</span>
+          </div>
+        </div>
+      </div>
+      <div class="jobs-resume">
+        <p>Don't see a fit? Send us your resume anyway.</p>
+        <button class="resume-btn">Submit Your Resume</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     CONTACT — Drop Us a Line (with Map)
+══════════════════════════════════════ -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+
+    <!-- Map side -->
+    <div class="contact-map-side">
+      <!-- Google Maps embed for 2821 S Parker Rd, Aurora CO -->
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3072.5!2d-104.7994!3d39.6897!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x876c63f7a1b9a8e5%3A0x1234567890abcdef!2s2821%20S%20Parker%20Rd%2C%20Aurora%2C%20CO%2080014!5e0!3m2!1sen!2sus!4v1234567890"
+        allowfullscreen
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Reliable Home Healthcare location map">
+      </iframe>
+      <div class="contact-map-overlay"></div>
+    </div>
+
+    <!-- Form side -->
+    <div class="contact-form-side">
+      <div class="section-label">Contact Us</div>
+      <h2 class="section-title">Drop Us <em>a Line</em></h2>
+      <p style="font-size:0.9rem;color:var(--text-mid);margin-bottom:1.8rem;line-height:1.6;">Have questions or need assistance? Our friendly team is ready to listen and respond.</p>
+
+      <div class="contact-info-items">
+        <div class="contact-info-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div>
+            <strong>Address</strong>
+            2821 S Parker Rd, Building 2, Suite 411<br>Aurora, CO 80014
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.38 2 2 0 0 1 3.6 1.2h3a2 2 0 0 1 2 1.72c.13.96.36 1.91.7 2.81a2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6.08 6.08l1.96-1.97a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <div>
+            <strong>Phone</strong>
+            720-651-3007 &nbsp;|&nbsp; Fax: 303-285-4438
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <div>
+            <strong>Email</strong>
+            info@reliablehomehc.com
+          </div>
+        </div>
+      </div>
+
+      <div style="font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-light);margin-bottom:0.65rem;">Follow Us</div>
+      <div class="contact-socials">
+        <a href="#" class="social-btn" aria-label="Facebook">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+        <a href="#" class="social-btn" aria-label="X / Twitter">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <a href="#" class="social-btn" aria-label="Instagram">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+      </div>
+
+      <form class="contact-form" onsubmit="return false;">
+        <div class="contact-row">
+          <div class="cf-group">
+            <label>Full Name *</label>
+            <input type="text" placeholder="John Doe">
+          </div>
+          <div class="cf-group">
+            <label>Email *</label>
+            <input type="email" placeholder="john@example.com">
+          </div>
+        </div>
+        <div class="cf-group">
+          <label>Phone</label>
+          <input type="tel" placeholder="(720) 555-0100">
+        </div>
+        <div class="cf-group">
+          <label>Message *</label>
+          <textarea placeholder="How can we help you?"></textarea>
+        </div>
+        <div class="cf-consent">
+          <input type="checkbox">
+          <span>I consent to the collection of my personal information in accordance with the <a href="#">Privacy Policy</a>.</span>
+        </div>
+        <button type="submit" class="cf-submit">Send Message</button>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     TESTIMONIALS
+══════════════════════════════════════ -->
+<section class="testimonials" id="testimonials">
+  <div class="testimonials-header reveal">
+    <div class="section-label">Patient Stories</div>
+    <h2 class="section-title">Words from <em>families we've helped.</em></h2>
+  </div>
+
+  <div class="testimonials-grid">
+    <div class="testimonial-card reveal">
+      <div class="stars">★★★★★</div>
+      <!-- TEMPLATE: Real testimonial here -->
+      <p class="testimonial-text">
+        <span class="ph" style="color:rgba(247,242,234,0.4);font-style:normal;font-family:inherit;font-size:0.82rem;">[Testimonial 1 — 2 to 3 sentences from a patient or family about their experience]</span>
+      </p>
+      <div class="testimonial-author">— <span class="ph" style="color:rgba(247,242,234,0.28);border-color:rgba(247,242,234,0.1);background:transparent;">[Name, City]</span></div>
+    </div>
+
+    <div class="testimonial-card reveal" style="transition-delay:0.1s">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">
+        <span class="ph" style="color:rgba(247,242,234,0.4);font-style:normal;font-family:inherit;font-size:0.82rem;">[Testimonial 2 — 2 to 3 sentences from a patient or family about their experience]</span>
+      </p>
+      <div class="testimonial-author">— <span class="ph" style="color:rgba(247,242,234,0.28);border-color:rgba(247,242,234,0.1);background:transparent;">[Name, City]</span></div>
+    </div>
+
+    <div class="testimonial-card reveal" style="transition-delay:0.2s">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">
+        <span class="ph" style="color:rgba(247,242,234,0.4);font-style:normal;font-family:inherit;font-size:0.82rem;">[Testimonial 3 — 2 to 3 sentences from a patient or family about their experience]</span>
+      </p>
+      <div class="testimonial-author">— <span class="ph" style="color:rgba(247,242,234,0.28);border-color:rgba(247,242,234,0.1);background:transparent;">[Name, City]</span></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     CTA
+══════════════════════════════════════ -->
+<section class="cta-section">
+  <div class="cta-inner reveal">
+    <div class="section-label" style="justify-content:center;">Ready to Begin?</div>
+    <h2 class="section-title">Let's build a care plan <em>together.</em></h2>
+    <p>Getting started is simple and free. Our team is standing by to help you find the best care for you or your loved one — no pressure, just compassion.</p>
+    <div class="cta-actions">
+      <button class="btn-primary" onclick="openModal('appointment')">Schedule a Free Consultation</button>
+      <a href="tel:7206513007" class="phone-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.38 2 2 0 0 1 3.6 1.2h3a2 2 0 0 1 2 1.72c.13.96.36 1.91.7 2.81a2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6.08 6.08l1.96-1.97a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        720-651-3007
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     FOOTER
+══════════════════════════════════════ -->
+<footer>
+  <div class="footer-main">
+
+    <!-- Brand -->
+    <div>
+      <!-- LOGO - Light version -->
+      <a href="/" class="logo" style="margin-bottom:0.9rem;">
+        <img src="/logo.png" alt="Reliable Home Healthcare" class="logo-img">
+      </a>
+      <p style="font-size:0.87rem;line-height:1.75;color:rgba(247,242,234,0.4);margin-bottom:1rem;">
+        <!-- TEMPLATE: Your company tagline or mission statement (1–2 sentences) -->
+        <span class="ph" style="color:rgba(247,242,234,0.28);border-color:rgba(247,242,234,0.12);background:transparent;">[Company tagline — 1 to 2 sentences about your mission and service area]</span>
+      </p>
+      <div class="footer-certs">
+        <span class="footer-cert-badge">Medicare Certified</span>
+        <span class="footer-cert-badge">CHAP Accredited</span>
+      </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="footer-col">
+      <div class="footer-col-title">Navigation</div>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#careers">Careers</a></li>
+        <li><a href="#resources">Resources</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Service Areas -->
+    <div class="footer-col footer-service-areas">
+      <div class="footer-col-title">Service Areas</div>
+      <div class="area-chips">
+        <span class="area-chip">Adams</span>
+        <span class="area-chip">Arapahoe</span>
+        <span class="area-chip">Denver</span>
+        <span class="area-chip">Douglas</span>
+        <span class="area-chip">Elbert</span>
+        <span class="area-chip">Jefferson</span>
+        <span class="area-chip">Larimer</span>
+        <span class="area-chip">Morgan</span>
+        <span class="area-chip">Washington</span>
+      </div>
+    </div>
+
+    <!-- Contact info -->
+    <div class="footer-col">
+      <div class="footer-col-title">Contact</div>
+      <div style="display:flex;flex-direction:column;gap:0.75rem;">
+        <div style="font-size:0.85rem;color:rgba(247,242,234,0.45);line-height:1.6;">2821 S Parker Rd, Bldg 2 Suite 411<br>Aurora, CO 80014</div>
+        <a href="tel:7206513007" style="font-size:0.85rem;color:rgba(247,242,234,0.45);text-decoration:none;">720-651-3007</a>
+        <a href="mailto:info@reliablehomehc.com" style="font-size:0.85rem;color:rgba(247,242,234,0.45);text-decoration:none;">info@reliablehomehc.com</a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <span>© 2025 Reliable Home Healthcare, Inc. · All rights reserved</span>
+    <div class="footer-socials">
+      <a href="#" class="footer-social" aria-label="Facebook">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+      </a>
+      <a href="#" class="footer-social" aria-label="X">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      </a>
+      <a href="#" class="footer-social" aria-label="Instagram">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      </a>
+    </div>
+    <div class="footer-bottom-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Accessibility</a>
+      <a href="#">Sitemap</a>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ══════════════════════════════════════
+     APPOINTMENT / REFERRAL MODAL
+══════════════════════════════════════ -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModalOnOverlay(event)">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+
+    <!-- Tab switcher -->
+    <div class="modal-tabs">
+      <button class="modal-tab active" onclick="switchTab('appointment')">Schedule Appointment</button>
+      <button class="modal-tab" onclick="switchTab('referral')">Send Referral</button>
+    </div>
+
+    <!-- Appointment form -->
+    <div class="modal-form-section active" id="tab-appointment">
+      <div class="modal-title">Set an Appointment</div>
+      <div class="modal-subtitle">Schedule your care with ease. Our team will confirm within one business day.</div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Patient First Name *</label>
+          <input type="text" placeholder="Jane">
+        </div>
+        <div class="form-group">
+          <label>Patient Last Name *</label>
+          <input type="text" placeholder="Doe">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Phone *</label>
+          <input type="tel" placeholder="(720) 555-0100">
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" placeholder="jane@example.com">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Service Needed</label>
+        <select>
+          <option value="">Select a service…</option>
+          <option>Skilled Nursing</option>
+          <option>Physical Therapy</option>
+          <option>Occupational Therapy</option>
+          <option>Speech Therapy</option>
+          <option>Home Health Aide</option>
+          <option>Medical Social Services</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Preferred Date / Time</label>
+        <input type="text" placeholder="e.g. Weekday mornings, ASAP…">
+      </div>
+      <div class="form-group">
+        <label>Additional Notes</label>
+        <textarea placeholder="Any other information we should know…"></textarea>
+      </div>
+      <div class="consent-row">
+        <input type="checkbox">
+        <span>I consent to the collection of my personal information in accordance with the <a href="#" style="color:var(--forest);">Privacy Policy</a>.</span>
+      </div>
+      <button class="btn-primary" style="width:100%;text-align:center;">Request Appointment</button>
+    </div>
+
+    <!-- Referral form -->
+    <div class="modal-form-section" id="tab-referral">
+      <div class="modal-title">Send Your Referral</div>
+      <div class="modal-subtitle">Healthcare providers: refer your patients directly. We'll reach out within one business day to coordinate care.</div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Provider Name *</label>
+          <input type="text" placeholder="Dr. Smith">
+        </div>
+        <div class="form-group">
+          <label>Practice / Organization *</label>
+          <input type="text" placeholder="Aurora Medical Group">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Provider Phone *</label>
+          <input type="tel" placeholder="(720) 555-0200">
+        </div>
+        <div class="form-group">
+          <label>Provider Fax</label>
+          <input type="tel" placeholder="(720) 555-0201">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Patient Name *</label>
+          <input type="text" placeholder="Patient full name">
+        </div>
+        <div class="form-group">
+          <label>Patient DOB</label>
+          <input type="text" placeholder="MM/DD/YYYY">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Services Requested</label>
+        <select>
+          <option value="">Select a service…</option>
+          <option>Skilled Nursing</option>
+          <option>Physical Therapy</option>
+          <option>Occupational Therapy</option>
+          <option>Speech Therapy</option>
+          <option>Home Health Aide</option>
+          <option>Medical Social Services</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Clinical Notes / Diagnosis</label>
+        <textarea placeholder="Relevant clinical information…"></textarea>
+      </div>
+      <div class="consent-row">
+        <input type="checkbox">
+        <span>I confirm this referral is submitted with patient consent and complies with applicable HIPAA regulations.</span>
+      </div>
+      <button class="btn-primary" style="width:100%;text-align:center;">Send Referral</button>
+    </div>
+
+  </div>
+</div>
+
+
+<script>
+// ── Scroll Reveal ──
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -50px 0px' });
+document.querySelectorAll('.reveal').forEach(r => io.observe(r));
+
+// ── Services toggle ──
+function toggleServices() {
+  const grid = document.getElementById('servicesBottom');
+  const btn  = document.getElementById('viewMoreBtn');
+  const open = grid.classList.toggle('open');
+  btn.classList.toggle('open', open);
+  btn.innerHTML = open
+    ? '<span class="vmb-arrow">↑</span> Show Less'
+    : '<span class="vmb-arrow">↓</span> View More Services';
+}
+
+// ── Modal ──
+function openModal(tab) {
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  if (tab) switchTab(tab);
+}
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function closeModalOnOverlay(e) {
+  if (e.target === document.getElementById('modalOverlay')) closeModal();
+}
+function switchTab(name) {
+  document.querySelectorAll('.modal-tab').forEach((t,i) => {
+    t.classList.toggle('active', (i === 0 && name === 'appointment') || (i === 1 && name === 'referral'));
+  });
+  document.querySelectorAll('.modal-form-section').forEach(s => s.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+</script>
+</body>
+</html>
