@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev -H 0.0.0.0 --turbopack",
-    "build": "next build",
+    "build": "next build && node -e \"require('fs').copyFileSync('public/index.html','out/index.html')\"",
     "start": "next start",
     "preview": "npm run build && npx serve out",
     "lint": "bunx tsc --noEmit && next lint",
